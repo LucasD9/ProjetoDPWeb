@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <h:outputStylesheet library="css" name="estiloComponentes.css"/>
+        <h:outputStylesheet library="css" name="estiloCorpo.css"/>
+
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+        <h:outputScript library="js" name="jquery-3.2.1.min.js" />
+        <h:outputScript library="js" name="materialize.js" />
+        <h:outputStylesheet library="css" name="materialize.css"/>
+    </h:head>
+
+    <h:body>
+        <div id="custom_topo" align="center">           
+            <ui:insert name="top">
+                <div id="custom_menu-aux">
+                </div>
+                <nav>
+                    <div class="nav-wrapper teal lighten-1">
+                        <ul id="nav-mobile" class="left hide-on-med-and-down">
+                            <li><a href="sass.html">Sass</a></li>
+                            <li><a href="badges.html">Components</a></li>
+                            <li><a href="collapsible.html">JavaScript</a></li>
+                        </ul>
+                    </div>
+                </nav>
+            </ui:insert>            
+        </div>
+
+        <div id="custom_meio" class="center_content" align="center">
+            <ui:insert name="content"></ui:insert>
+        </div>
+
+        <div id="custom_rodape">
+            <ui:insert name="bottom">
+                <h2 style="font-size: 18px">Desenvolvido por Lucas Dias - IFPR Campus Paranavaí</h2>
+            </ui:insert>
+        </div>
+
+    </h:body>
+</html>

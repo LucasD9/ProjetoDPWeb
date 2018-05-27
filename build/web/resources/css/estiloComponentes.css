@@ -1,0 +1,42 @@
+/*Todo conteudo estiizado de forma particular deve ter o padrão de nomenclatura "custom_nomeDoElemento"*/
+#custom_menu-aux{
+    position: relative;
+    background-color: #4db6ac;
+    width: auto;
+    height: 100px;
+}
+
+#custom_menu{
+    bottom: 2px;
+    margin-right:auto;
+    margin-left:auto;
+    margin-bottom: 0px;
+}
+
+
+
+#custom_imgWellcome{
+    width:50%;
+    margin-top:2%;
+}
+
+
+.center_content {
+    height: 600px;
+    position: relative;
+    background-color: #dddddd;
+    padding: 5px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
