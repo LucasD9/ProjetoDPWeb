@@ -1,14 +1,13 @@
-#custom_top {
+#container_topo {
     background-color: #4db6ac;
     color: white;
 }
 
-#custom_meio{
+#container_meio{
     background-color: #dddddd;
 }
 
-#custom_rodape{
-    display: block;
+#container_rodape{
     background-color: #4db6ac;
     height: 100%;
     padding: 1px;
@@ -22,7 +21,7 @@
 
 
 
-/*reset css*/
+reset css
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,

@@ -13,18 +13,18 @@ import javax.faces.bean.SessionScoped;
 public class CidadeMB {
 
     private Cidade cidade;
-    private List<Cidade> listaCidades;
+    private List<Cidade> listaCidade;
     private DAOGenerico<Cidade> daoCidade;
-    private Estado estado;
 
     public CidadeMB() {
         cidade = new Cidade();
-        listaCidades = new ArrayList<Cidade>();
+        listaCidade = new ArrayList<Cidade>();
         daoCidade = new DAOGenerico<Cidade>(Cidade.class);
+        preencherLista();
     }
 
-    private void preencherListaCidades() {
-        listaCidades = daoCidade.buscarTodos();
+    private void preencherLista() {
+        listaCidade = daoCidade.buscarTodos();
     }
 
     public void inserir() {
@@ -33,10 +33,16 @@ public class CidadeMB {
         } else {
             daoCidade.alterar(cidade);
         }
-        preencherListaCidades();
+        preencherLista();
         cidade = new Cidade();
     }
 
+    public void remover(Long id) {
+        daoCidade.excluir(id);
+        preencherLista();
+    }
+
+//GETTERS AND SETTERS-----------------------------------------------------------
     public Cidade getCidade() {
         return cidade;
     }
@@ -45,12 +51,12 @@ public class CidadeMB {
         this.cidade = cidade;
     }
 
-    public List<Cidade> getListaCidades() {
-        return listaCidades;
+    public List<Cidade> getListaCidade() {
+        return listaCidade;
     }
 
-    public void setListaCidades(List<Cidade> listaCidades) {
-        this.listaCidades = listaCidades;
+    public void setListaCidade(List<Cidade> listaCidade) {
+        this.listaCidade = listaCidade;
     }
 
     public DAOGenerico<Cidade> getDaoCidade() {
@@ -59,13 +65,5 @@ public class CidadeMB {
 
     public void setDaoCidade(DAOGenerico<Cidade> daoCidade) {
         this.daoCidade = daoCidade;
-    }
-
-    public Estado getEstado() {
-        return estado;
-    }
-
-    public void setEstado(Estado estado) {
-        this.estado = estado;
     }
 }

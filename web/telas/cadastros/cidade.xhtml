@@ -1,0 +1,70 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="/telas/template.xhtml">
+            <ui:define name="content">
+
+                <h:form id="botaoCadastrar">
+                    <p:commandButton value="Cadastrar Cidade" 
+                                     oncomplete="PF('dialog').show()" 
+                                     update=":formCadastro"/>
+                </h:form><p></p>
+
+                <h:form id="formTabela" style="text-align: center">
+                    <p:dataTable var="cidade" value="#{cidadeMB.listaCidade}">
+                        <p:column headerText="Nome">
+                            <h:outputText value="#{cidade.nome}"/>
+                        </p:column>
+                        <p:column headerText="Estado">
+                            <h:outputText value="#{cidade.estado.nome}"/>
+                        </p:column>
+                        <p:column headerText="Ações" style=" width:20%">
+                            <p:commandButton value="Excluir" 
+                                             update="@form" 
+                                             actionListener="#{cidadeMB.remover(cidade.id)}"
+                                             style="background: #ffdacc"
+                                             icon="ui-icon-trash">
+                                <p:confirm header="Confirmação" message="Deseja realmente excluir?" icon="ui-icon-alert" />
+                            </p:commandButton>
+
+                        </p:column>
+                    </p:dataTable>
+                    <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                        <p:commandButton value="Sim" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                        <p:commandButton value="Não" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                    </p:confirmDialog>
+                </h:form>
+
+                <p:dialog id="dialogCadastro" header="Cadastro Cidade" widgetVar="dialog" modal="true" height="110" width="300">
+                    <p:messages id ="mensagem" />
+                    <h:form id="formCadastro">
+                        <h:panelGrid columns="1" cellpadding="4">
+                            <h:outputText value="Nome: "/>
+                            <p:inputText value="#{cidadeMB.cidade.nome}" 
+                                         requiredMessage="Campo nome está vazio" 
+                                         required = "true"/>
+                            <h:outputText value="Estado: "/>
+
+                            <br></br>
+                        </h:panelGrid>
+                        <p:commandButton value="Inserir" 
+                                         actionListener="#{cidadeMB.inserir()}"
+                                         oncomplete="handleComplete(xhr, status, args)"
+                                         update=":formTabela, :mensagem"
+                                         style="width: 100%"/>
+                    </h:form>
+                </p:dialog> 
+
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

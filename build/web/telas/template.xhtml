@@ -3,46 +3,51 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <h:head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <h:outputStylesheet library="css" name="estiloComponentes.css"/>
         <h:outputStylesheet library="css" name="estiloCorpo.css"/>
-
+        <h:outputStylesheet library="css" name="cssPadrao1.css"/>
+        <h:outputScript library = "js" name = "script.js" /> 
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
-        <h:outputScript library="js" name="jquery-3.2.1.min.js" />
-        <h:outputScript library="js" name="materialize.js" />
-        <h:outputStylesheet library="css" name="materialize.css"/>
+
     </h:head>
 
     <h:body>
-        <div id="custom_topo" align="center">           
-            <ui:insert name="top">
-                <div id="custom_menu-aux">
-                </div>
-                <nav>
-                    <div class="nav-wrapper teal lighten-1">
-                        <ul id="nav-mobile" class="left hide-on-med-and-down">
-                            <li><a href="sass.html">Sass</a></li>
-                            <li><a href="badges.html">Components</a></li>
-                            <li><a href="collapsible.html">JavaScript</a></li>
-                        </ul>
+        <div id="corpo">
+            <div id="container_topo" align="center" >           
+                <ui:insert name="top">
+                    <div id="custom_areaSuperior">
                     </div>
-                </nav>
-            </ui:insert>            
-        </div>
+                    <div id="custom_menu">
+                        <h:form>  
+                            <p:growl id="messages"/>
+                            <p:menubar  class="custom_menuType">
+                                <p:menuitem value=" Cadastro de Fornecedores  " url="telas/cadastros/fornecedor.jsf" icon="ui-icon-document-b" />
+                                <p:menuitem value=" Cadastro de Cidades  " url="telas/cadastros/cidade.jsf" icon="ui-icon-document-b" />
+                                <p:menuitem value=" Cadastro de Estados  " url="telas/cadastros/estado.jsf" icon="ui-icon-document-b" />
+                                <f:facet name="options">
+                                    <p:commandButton type="button" value="Logout" icon="ui-icon-extlink" />
+                                </f:facet>
+                            </p:menubar>
+                        </h:form>
+                    </div>
+                </ui:insert>            
+            </div>
 
-        <div id="custom_meio" class="center_content" align="center">
-            <ui:insert name="content"></ui:insert>
-        </div>
+            <div id="container_meio" class="center_content" align="center" >
+                <ui:insert name="content"></ui:insert>
+            </div>
 
-        <div id="custom_rodape">
-            <ui:insert name="bottom">
-                <h2 style="font-size: 18px">Desenvolvido por Lucas Dias - IFPR Campus Paranavaí</h2>
-            </ui:insert>
+            <div id="container_rodape" >
+                <ui:insert name="bottom"><br></br>
+                    <h2 style="font-size: 18px">Desenvolvido por Lucas Dias - IFPR Campus Paranavaí</h2><br></br>
+                </ui:insert>
+            </div>
         </div>
-
     </h:body>
 </html>

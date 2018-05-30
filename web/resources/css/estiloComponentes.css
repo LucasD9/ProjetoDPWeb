@@ -1,5 +1,5 @@
 /*Todo conteudo estiizado de forma particular deve ter o padrão de nomenclatura "custom_nomeDoElemento"*/
-#custom_menu-aux{
+#custom_areaSuperior{
     position: relative;
     background-color: #4db6ac;
     width: auto;
@@ -11,8 +11,18 @@
     margin-right:auto;
     margin-left:auto;
     margin-bottom: 0px;
+    background-color: white;
 }
 
+#botaoCadastrar{
+    margin: 0px 90% 0px 0px;
+}
+
+#tabela { 
+    position:relative; 
+    left:7%; 
+    display:block;
+}
 
 
 #custom_imgWellcome{

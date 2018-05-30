@@ -1,15 +1,10 @@
 package controle;
 
 import banco.DAOGenerico;
-import java.io.IOException;
-import java.io.Serializable;
-import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.faces.bean.ViewScoped;
 import entidades.Estado;
 
 @ManagedBean
@@ -17,29 +12,23 @@ import entidades.Estado;
 public class EstadoMB {
 
     private Estado estado;
-    private List<Estado> listaEstados;
+    private List<Estado> listaEstado;
     private DAOGenerico<Estado> daoEstado;
-    //gerar get e set
-    private String nome;
 
     public EstadoMB() {
-        criarObjetos();
-        preencherListaEstados();
-    } 
-
-    private void criarObjetos() {
         estado = new Estado();
-        listaEstados = new ArrayList<Estado>();
+        listaEstado = new ArrayList<Estado>();
         daoEstado = new DAOGenerico<Estado>(Estado.class);
+        preencherLista();
     }
 
-    private void preencherListaEstados() {
-        listaEstados = daoEstado.buscarTodos();
+    private void preencherLista() {
+        listaEstado = daoEstado.buscarTodos();
     }
 
     public void remover(Long id) {
         daoEstado.excluir(id);
-        preencherListaEstados();
+        preencherLista();
     }
 
     public void inserir() {
@@ -48,10 +37,11 @@ public class EstadoMB {
         } else {
             daoEstado.alterar(estado);
         }
-        preencherListaEstados();
+        preencherLista();
         estado = new Estado();
     }
 
+//GETTERS AND SETTERS-----------------------------------------------------------
     public Estado getEstado() {
         return estado;
     }
@@ -60,19 +50,11 @@ public class EstadoMB {
         this.estado = estado;
     }
 
-    public List<Estado> getListaEstados() {
-        return listaEstados;
+    public List<Estado> getListaEstado() {
+        return listaEstado;
     }
 
-    public void setListaEstados(List<Estado> listaEstados) {
-        this.listaEstados = listaEstados;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setListaEstados(List<Estado> listaEstado) {
+        this.listaEstado = listaEstado;
     }
 }
