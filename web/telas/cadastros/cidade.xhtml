@@ -11,11 +11,12 @@
         <ui:composition template="/telas/template.xhtml">
             <ui:define name="content">
 
-                <h:form id="botaoCadastrar">
+                <br></br><br></br>
+                <h:form>
                     <p:commandButton value="Cadastrar Cidade" 
                                      oncomplete="PF('dialog').show()" 
                                      update=":formCadastro"/>
-                </h:form><p></p>
+                </h:form><br></br>
 
                 <h:form id="formTabela" style="text-align: center">
                     <p:dataTable var="cidade" value="#{cidadeMB.listaCidade}">
@@ -42,23 +43,29 @@
                     </p:confirmDialog>
                 </h:form>
 
-                <p:dialog id="dialogCadastro" header="Cadastro Cidade" widgetVar="dialog" modal="true" height="110" width="300">
+                <p:dialog id="dialogCadastro" header="Cadastro Cidade" widgetVar="dialog" modal="true" height="150" width="300">
                     <p:messages id ="mensagem" />
                     <h:form id="formCadastro">
                         <h:panelGrid columns="1" cellpadding="4">
                             <h:outputText value="Nome: "/>
                             <p:inputText value="#{cidadeMB.cidade.nome}" 
                                          requiredMessage="Campo nome está vazio" 
-                                         required = "true"/>
+                                         required = "true"/><br/>
                             <h:outputText value="Estado: "/>
-
+<!--                            <p:selectOneMenu converter="converterEstado" value="#{cidadeMB.cidade.estado}" requiredMessage="Escolha um estado" required = "true" style="width: 85%">
+                                <f:selectItem itemLabel="Selecione"/>
+                                <f:selectItems value="#{estadoMB.listaEstado}" 
+                                               var ="estado"
+                                               itemLabel="#{estado.nomeEstado}"
+                                               itemValue="#{estado}"/>
+                            </p:selectOneMenu>-->
                             <br></br>
                         </h:panelGrid>
                         <p:commandButton value="Inserir" 
                                          actionListener="#{cidadeMB.inserir()}"
                                          oncomplete="handleComplete(xhr, status, args)"
                                          update=":formTabela, :mensagem"
-                                         style="width: 100%"/>
+                                         style="width: 180px"/>
                     </h:form>
                 </p:dialog> 
 

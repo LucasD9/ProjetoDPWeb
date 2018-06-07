@@ -10,12 +10,12 @@
 
         <ui:composition template="/telas/template.xhtml">
             <ui:define name="content">
-
-                <h:form id="botaoCadastrar">
+                <br></br><br></br>
+                <h:form>
                     <p:commandButton value="Cadastrar Estado" 
                                      oncomplete="PF('dialog').show()" 
                                      update=":formCadastro"/>
-                </h:form><p></p>
+                </h:form><br></br>
 
                 <h:form id="formTabela" style="text-align: center">
                     <p:dataTable var="estado" value="#{estadoMB.listaEstado}">
@@ -44,7 +44,7 @@
                     </p:confirmDialog>
                 </h:form>
 
-                <p:dialog id="dialogCadastro" header="Cadastro Estado" widgetVar="dialog" modal="true"  height="110" width="290">
+                <p:dialog id="dialogCadastro" header="Cadastro Estado" widgetVar="dialog" modal="true" height="150" width="300">
                     <p:messages id ="mensagem" />
                     <h:form id="formCadastro">
                         <h:panelGrid columns="1" cellpadding="4">
@@ -54,7 +54,8 @@
                             <p:inputText value="#{estadoMB.estado.sigla}" 
                                          requiredMessage="Campo sigla está vazio" 
                                          required = "true"
-                                         maxlength="2"/>
+                                         maxlength="2"
+                                         validator="validarSigla"/>
                             <br></br>
 
                         </h:panelGrid>
@@ -62,7 +63,7 @@
                                          actionListener="#{estadoMB.inserir()}"
                                          oncomplete="handleComplete(xhr, status, args)"
                                          update=":formTabela, :mensagem"
-                                         style="width: 100%"/>
+                                         style="width: 180px"/>
                     </h:form>
                 </p:dialog> 
             </ui:define>

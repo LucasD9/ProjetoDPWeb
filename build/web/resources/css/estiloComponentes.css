@@ -18,9 +18,9 @@
     margin: 0px 90% 0px 0px;
 }
 
-#tabela { 
+#formTabela { 
     position:relative; 
-    left:7%; 
+    width: 90%; 
     display:block;
 }
 

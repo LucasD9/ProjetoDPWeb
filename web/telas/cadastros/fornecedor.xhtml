@@ -9,6 +9,7 @@
     <body>
         <ui:composition template="/telas/template.xhtml">
             <ui:define name="content">
+                <br></br><br></br>
                 <h:form>
                     <p:commandButton value="Cadastrar fornecedores" 
                                      oncomplete="PF('dialog').show()"
@@ -41,23 +42,25 @@
                     </p:dataTable>
                 </h:form>
 
-                <p:dialog id="dialogCadastro" header="Cadastro Fornecedor" widgetVar="dialog" modal="true">
+                <p:dialog id="dialogCadastro" header="Cadastro Fornecedor" widgetVar="dialog" modal="true" height="250" width="300">
                     <p:messages id="mensagem"/> 
                     <h:form id="formCadastro">
                         <h:panelGrid columns="1" cellpadding="4">
                             <h:outputLabel value="Nome / Razão social:"/>
-                            <p:inputText value="#{fornecedorMB.fornecedor.razaoSocial}" requiredMessage="Campo Vazio" required = "true"/><br/>
+                            <p:inputText value="#{fornecedorMB.fornecedor.razaoSocial}" requiredMessage="Campo Vazio" required = "true" validator="validarNome"/><br/>
                             <h:outputLabel value="CNPJ:"/>
-                            <p:inputText value="#{fornecedorMB.fornecedor.cnpj}"  requiredMessage="O campo cnpj está vazio" required = "true"/><br/>
+                            <p:inputText value="#{fornecedorMB.fornecedor.cnpj}"  requiredMessage="O campo cnpj está vazio" required = "true" validator="validarCnpj"/><br/>
+                            <h:outputLabel value="IE:"/>
+                            <p:inputText value="#{fornecedorMB.fornecedor.ie}"  requiredMessage="O campo cnpj está vazio" required = "true"/><br/>
                             <h:outputLabel value="Endereço: "/>
                             <p:inputText value="#{fornecedorMB.fornecedor.endereco}" requiredMessage="Campo Vazio" required = "true"/>
                         </h:panelGrid>
-                        <br></br>
+                        <br></br><br></br>
                         <p:commandButton value="Inserir" 
                                          actionListener="#{fornecedorMB.inserir()}"
                                          oncomplete="handleComplete(xhr, status, args)"
                                          update=":formTabela, :mensagem"
-                                         style="width: 100%"/>
+                                         style="width: 180px"/>
                     </h:form>
                 </p:dialog>
             </ui:define>
